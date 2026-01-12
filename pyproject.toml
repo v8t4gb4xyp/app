@@ -7,13 +7,12 @@ requires-python = ">=3.14"
 dependencies = [
     "databricks>=0.2",
     "databricks-agents",
-    "dspy>=3.0.4",
+    "dspy>=3.1.0b1",
+    "gepa>=0.0.22",
     "grpcio-tools>=1.76.0",
     "jupyter>=1.1.1",
-    "mlflow[databricks]>=3.7.0",
-    "psycopg2-binary>=2.9.11",
+    "mlflow>=3.7.0",
     "pydantic>=2.12.5",
     "requests>=2.32.5",
     "ruff>=0.14.8",
-    "whenever",
 ]

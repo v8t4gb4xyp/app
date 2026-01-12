@@ -46,17 +46,11 @@ class NullFilter(pydantic.BaseModel):
     is_negative: bool
 
 
-type Filter = StringFilter | NumberFilter | DateFilter | NullFilter
-
-
 class CompositeFilter(pydantic.BaseModel):
     """Model for composite filter with multiple conditions"""
 
-    filters: list[Filter]
+    filters: list[StringFilter | NumberFilter | DateFilter | NullFilter]
     conjunction: Literal["AND", "OR"]
-
-
-type Filters = Filter | CompositeFilter
 
 
 class QueryPayload(pydantic.BaseModel):
@@ -65,6 +59,6 @@ class QueryPayload(pydantic.BaseModel):
     modelId: str = pydantic.Field("", description="Data Model Identifier")
     table: str
     fields: list[str]
-    filters: dict[str, Filters] | None
+    filters: list[tuple[str, StringFilter | NumberFilter | DateFilter | NullFilter | CompositeFilter]] | None
     limit: int
     sorts: list[SortColumn]
